@@ -4,14 +4,17 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.MotorSub;
 
 public class MotorCommand extends Command {
   MotorSub m_subsystem;
+  Joystick m_Joystick;
   /** Creates a new MotorCommand. */
-  public MotorCommand(MotorSub subsystem) {
+  public MotorCommand(MotorSub subsystem, Joystick joystick) {
     m_subsystem = subsystem;
+    m_Joystick = joystick;
     addRequirements(m_subsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -24,13 +27,13 @@ public class MotorCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.setMotor(0.5);
+    m_subsystem.setMotor(-m_Joystick.getRawAxis(1),m_Joystick.getRawAxis(5));
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_subsystem.setMotor(0);
+    
   }
 
   // Returns true when the command should end.

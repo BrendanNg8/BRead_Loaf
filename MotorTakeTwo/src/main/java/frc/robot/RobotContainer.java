@@ -37,8 +37,9 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     m_MotorSub = new MotorSub();
-    m_MotorCommand = new MotorCommand(m_MotorSub);
+    
     joystick = new Joystick(0);
+    m_MotorCommand = new MotorCommand(m_MotorSub,joystick);
     // Configure the trigger bindings
     configureBindings();
   }
@@ -72,5 +73,8 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
     return Autos.exampleAuto(m_exampleSubsystem);
+  }
+  public Command getT(){
+    return m_MotorCommand;
   }
 }
