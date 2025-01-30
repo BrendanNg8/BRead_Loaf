@@ -27,7 +27,7 @@ public class MotorCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_subsystem.setMotor(-m_Joystick.getRawAxis(5),m_Joystick.getRawAxis(1));
+    m_subsystem.setMotor(-m_Joystick.getRawAxis(1),m_Joystick.getRawAxis(5));
   }
 
   // Called once the command ends or is interrupted.
