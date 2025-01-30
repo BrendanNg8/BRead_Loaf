@@ -28,12 +28,13 @@ public class MotorCommand extends Command {
   @Override
   public void execute() {
     m_subsystem.setMotor(-m_Joystick.getRawAxis(5),m_Joystick.getRawAxis(1));
+    m_subsystem.motormovement(0.2);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    
+    m_subsystem.motormovement(0);
   }
 
   // Returns true when the command should end.

@@ -11,6 +11,7 @@ import frc.robot.commands.MotorCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.MotorSub;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.simulation.JoystickSim;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -29,6 +30,7 @@ public class RobotContainer {
   MotorCommand m_MotorCommand;
   Joystick joystick;
   JoystickButton jbutton;
+  JoystickButton shootButton;
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -56,6 +58,8 @@ public class RobotContainer {
   private void configureBindings() {
     jbutton = new JoystickButton(joystick, 1);
     jbutton.whileTrue(m_MotorCommand);
+    shootButton = new JoystickButton(joystick, 2);
+    shootButton.whileTrue(m_MotorCommand);
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
     new Trigger(m_exampleSubsystem::exampleCondition)
         .onTrue(new ExampleCommand(m_exampleSubsystem));

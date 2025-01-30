@@ -15,6 +15,8 @@ public class MotorSub extends SubsystemBase {
   TalonFX motor2;
   TalonFX motor3;
   TalonFX motor4;
+  TalonFX motor5;
+
   MotorControllerGroup left;
   MotorControllerGroup right;
   DifferentialDrive drive;
@@ -26,6 +28,8 @@ public class MotorSub extends SubsystemBase {
     motor2 = new TalonFX(3);
     motor3 = new TalonFX(2);
     motor4 = new TalonFX(1);
+    motor5 = new TalonFX(6);
+    
 
     left = new MotorControllerGroup(motor3,motor4);
     right = new MotorControllerGroup(motor1,motor2);
@@ -33,6 +37,11 @@ public class MotorSub extends SubsystemBase {
   }
   public void setMotor(double speed,double rotation) {
       drive.arcadeDrive(speed, rotation);
+      motor1.set(speed);
+  }
+
+  public void motormovement(double speed) {
+    motor5.set(speed);
   }
 
   @Override
